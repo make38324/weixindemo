@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.czm.handler.MsgHandler;
 import com.czm.handler.SubscribeHandler;
+import com.github.sd4324530.fastweixin.message.TextMsg;
 import com.github.sd4324530.fastweixin.message.req.ReqType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +23,6 @@ import com.github.sd4324530.fastweixin.servlet.WeixinControllerSupport;
 /**
  *
  * @ClassName: WeixinController
- * @Description: 微信的核心控制器
- * @author 猿说教育-Jame
  * @date 2017年6月5日 下午9:23:31
  */
 @RestController
@@ -59,10 +58,7 @@ public class WeixinController extends WeixinControllerSupport {
                 String content = msg.getContent();
                 log.debug("用户发送到服务器的内容:{}", content);
                 System.out.println("content:"+content);
-                BaseMsg baseMsg = new BaseMsg();
-                baseMsg.setMsgType(ReqType.TEXT);
-
-                return baseMsg;
+                return new TextMsg("hello，哈哈");
         }
         /*1.1版本新增，重写父类方法，加入自定义微信消息处理器
          *不是必须的，上面的方法是统一处理所有的文本消息，如果业务觉复杂，上面的会显得比较乱
