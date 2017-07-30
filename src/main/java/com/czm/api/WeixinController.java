@@ -30,8 +30,20 @@ import com.github.sd4324530.fastweixin.servlet.WeixinControllerSupport;
 public class WeixinController extends WeixinControllerSupport {
         private static final Logger log = LoggerFactory.getLogger(WeixinController.class);
         private static final String TOKEN = "jame";
-        private static final String APPID="wxd4b606be1d6bbcc0";
-        private static final String APPSECRET="75836260484e42a4a21fe81af956473d";
+        private static final String APPID="wx4409ac4d64290eac";
+        private static final String APPSECRET="61e128d4a18aaea7bc08b9fbe1db484a";
+
+        public static String getTOKEN() {
+                return TOKEN;
+        }
+
+        public static String getAPPID() {
+                return APPID;
+        }
+
+        public static String getAPPSECRET() {
+                return APPSECRET;
+        }
 
         @Autowired
         private SubscribeHandler subscribeHandler;
@@ -48,10 +60,11 @@ public class WeixinController extends WeixinControllerSupport {
         }
         //使用安全模式时设置：密钥
         //不再强制重写，有加密需要时自行重写该方法
-//        @Override
-//        protected String getAESKey() {
-//                return APPSECRET;
-//        }
+        @Override
+        protected String getAESKey() {
+                return null;
+        }
+
         //重写父类方法，处理对应的微信消息 返回null则表示不处理
         @Override
         protected BaseMsg handleTextMsg(TextReqMsg msg) {
@@ -67,7 +80,7 @@ public class WeixinController extends WeixinControllerSupport {
         @Override
         protected List<MessageHandle> initMessageHandles() {
                 List<MessageHandle> handles = new ArrayList<MessageHandle>();
-//                handles.add(new MsgHandler());
+                handles.add(new MsgHandler());
                 return handles;
         }
         //1.1版本新增，重写父类方法，加入自定义微信事件处理器，同上
@@ -75,7 +88,7 @@ public class WeixinController extends WeixinControllerSupport {
         protected List<EventHandle> initEventHandles() {
                 List<EventHandle> handles = new ArrayList<EventHandle>();
                 //关注事件处理类添加进来
-//                handles.add(subscribeHandler);
+                handles.add(subscribeHandler);
                 return handles;
         }
 }
