@@ -7,6 +7,7 @@ import java.util.List;
 import com.czm.handler.MsgHandler;
 import com.czm.handler.SubscribeHandler;
 import com.github.sd4324530.fastweixin.message.TextMsg;
+import com.github.sd4324530.fastweixin.message.req.BaseEvent;
 import com.github.sd4324530.fastweixin.message.req.ReqType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,10 +74,17 @@ public class WeixinController extends WeixinControllerSupport {
                 System.out.println("content:"+content);
                 return new TextMsg("hello，哈哈");
         }
+
+        @Override
+        protected BaseMsg handleSubscribe(BaseEvent event) {
+                //交给handler
+                return null;
+        }
+
         /*1.1版本新增，重写父类方法，加入自定义微信消息处理器
-         *不是必须的，上面的方法是统一处理所有的文本消息，如果业务觉复杂，上面的会显得比较乱
-         *这个机制就是为了应对这种情况，每个MessageHandle就是一个业务，只处理指定的那部分消息
-         */
+                 *不是必须的，上面的方法是统一处理所有的文本消息，如果业务觉复杂，上面的会显得比较乱
+                 *这个机制就是为了应对这种情况，每个MessageHandle就是一个业务，只处理指定的那部分消息
+                 */
         @Override
         protected List<MessageHandle> initMessageHandles() {
                 List<MessageHandle> handles = new ArrayList<MessageHandle>();
