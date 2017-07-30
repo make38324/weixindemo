@@ -48,10 +48,10 @@ public class WeixinController extends WeixinControllerSupport {
         }
         //使用安全模式时设置：密钥
         //不再强制重写，有加密需要时自行重写该方法
-        @Override
-        protected String getAESKey() {
-                return APPSECRET;
-        }
+//        @Override
+//        protected String getAESKey() {
+//                return APPSECRET;
+//        }
         //重写父类方法，处理对应的微信消息 返回null则表示不处理
         @Override
         protected BaseMsg handleTextMsg(TextReqMsg msg) {
