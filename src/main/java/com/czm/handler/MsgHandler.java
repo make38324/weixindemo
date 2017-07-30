@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by mac on 17/7/29.
  */
-@Component
+@Component("MsgHandler")
 public class MsgHandler implements MessageHandle<BaseReqMsg> {
     @Override
     public BaseMsg handle(BaseReqMsg baseReqMsg) {

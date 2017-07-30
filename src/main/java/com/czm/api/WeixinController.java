@@ -88,7 +88,6 @@ public class WeixinController extends WeixinControllerSupport {
         @Override
         protected List<MessageHandle> initMessageHandles() {
                 List<MessageHandle> handles = new ArrayList<MessageHandle>();
-                handles.add(new MsgHandler());
                 return handles;
         }
         //1.1版本新增，重写父类方法，加入自定义微信事件处理器，同上

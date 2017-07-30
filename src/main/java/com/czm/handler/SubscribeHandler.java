@@ -36,6 +36,7 @@ public class SubscribeHandler implements EventHandle<BaseEvent> {
 
     @Override
     public boolean beforeHandle(BaseEvent baseEvent) {
+        System.out.println("event:"+baseEvent.getEvent());
         if(baseEvent.getEvent()== EventType.SUBSCRIBE){
             return true;
         }else {
