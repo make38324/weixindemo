@@ -95,6 +95,7 @@ public class PostServer {
 		JSONObject json = new JSONObject();
 		json.put("key", apiKey);
 		json.put("info",content);
+		json.put("userid",openid);
 		json.put("timestamp", timestamp);
 		json.put("data", data);
 		//请求图灵api
