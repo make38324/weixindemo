@@ -72,7 +72,7 @@ public class WeixinController extends WeixinControllerSupport {
                 String content = msg.getContent();
                 log.debug("用户发送到服务器的内容:{}", content);
                 System.out.println("content:"+content);
-                return new TextMsg("hello，哈哈");
+                return null;
         }
 
         @Override
