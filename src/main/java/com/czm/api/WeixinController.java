@@ -48,6 +48,9 @@ public class WeixinController extends WeixinControllerSupport {
 
         @Autowired
         private SubscribeHandler subscribeHandler;
+        @Autowired
+        private MsgHandler msgHandler;
+
         //设置TOKEN，用于绑定微信服务器
         @Override
         protected String getToken() {
@@ -88,6 +91,7 @@ public class WeixinController extends WeixinControllerSupport {
         @Override
         protected List<MessageHandle> initMessageHandles() {
                 List<MessageHandle> handles = new ArrayList<MessageHandle>();
+                handles.add(msgHandler);
                 return handles;
         }
         //1.1版本新增，重写父类方法，加入自定义微信事件处理器，同上
