@@ -37,7 +37,7 @@ public class SubscribeHandler implements EventHandle<BaseEvent> {
         ApiConfig apiConfig=new ApiConfig(WeixinController.getAPPID(),WeixinController.getAPPSECRET());
         UserAPI userAPI=new UserAPI(apiConfig);
         GetUserInfoResponse userInfo = userAPI.getUserInfo(baseEvent.getFromUserName());
-        weixinuserDao.save(ParseUtil.parseUser(userInfo));
+        weixinuserDao.saveAndFlush(ParseUtil.parseUser(userInfo));
         return newsMsg;
     }
 
