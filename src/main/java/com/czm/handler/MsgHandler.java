@@ -19,7 +19,7 @@ public class MsgHandler implements MessageHandle<BaseReqMsg> {
     public BaseMsg handle(BaseReqMsg baseReqMsg) {
         TextReqMsg msg= (TextReqMsg) baseReqMsg;
         String content = msg.getContent();
-        String result = PostServer.sendmsg(content);
+        String result = PostServer.sendmsg(content,baseReqMsg.getFromUserName());
         System.out.println("msg:"+result);
         return new TextMsg(result);
     }

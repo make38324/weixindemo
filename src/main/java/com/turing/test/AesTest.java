@@ -21,7 +21,7 @@ public class AesTest {
 		String secret = "7061dc3911f8b137";
 		//图灵网站上的apiKey
 		String apiKey = "316aa4a92f074397afeff8c1d2b56d66";
-		String cmd = "你叫什么";//测试用例
+		String cmd = "成语接龙开门见山";//测试用例
 		//待加密的json数据
 		String data = "{\"key\":\""+apiKey+"\",\"info\":\""+cmd+"\"}";
 		//获取时间戳
@@ -38,6 +38,8 @@ public class AesTest {
 		//封装请求参数
 		JSONObject json = new JSONObject();
 		json.put("key", apiKey);
+		json.put("info",cmd);
+		json.put("userid","3324589");
 		json.put("timestamp", timestamp);
 		json.put("data", data);
 		//请求图灵api

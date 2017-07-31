@@ -73,7 +73,7 @@ public class PostServer {
 		}
 		return result;
 	}
-	public static String sendmsg(String content){
+	public static String sendmsg(String content,String openid){
 		//图灵网站上的secret
 		String secret = "7061dc3911f8b137";
 		//图灵网站上的apiKey
@@ -94,6 +94,7 @@ public class PostServer {
 		//封装请求参数
 		JSONObject json = new JSONObject();
 		json.put("key", apiKey);
+		json.put("info",content);
 		json.put("timestamp", timestamp);
 		json.put("data", data);
 		//请求图灵api
