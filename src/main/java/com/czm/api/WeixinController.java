@@ -6,6 +6,11 @@ import java.util.List;
 
 import com.czm.handler.MsgHandler;
 import com.czm.handler.SubscribeHandler;
+import com.github.sd4324530.fastweixin.api.MenuAPI;
+import com.github.sd4324530.fastweixin.api.config.ApiConfig;
+import com.github.sd4324530.fastweixin.api.entity.*;
+import com.github.sd4324530.fastweixin.api.entity.Menu;
+import com.github.sd4324530.fastweixin.api.enums.MenuType;
 import com.github.sd4324530.fastweixin.message.TextMsg;
 import com.github.sd4324530.fastweixin.message.req.BaseEvent;
 import com.github.sd4324530.fastweixin.message.req.ReqType;
@@ -98,6 +103,16 @@ public class WeixinController extends WeixinControllerSupport {
         @Override
         protected List<EventHandle> initEventHandles() {
                 List<EventHandle> handles = new ArrayList<EventHandle>();
+                ApiConfig apiConfig=new ApiConfig(getAPPID(),getAPPSECRET());
+                MenuAPI menuAPI=new MenuAPI(apiConfig);
+                Menu menu = new Menu();
+                List<MenuButton> menuButtonList=new ArrayList<>();
+                MenuButton menuButton=new MenuButton();
+                menuButton.setName("输入发票信息");
+                menuButton.setUrl("http://www.baidu.com");
+                menuButton.setType(MenuType.CLICK);
+                menu.setButton(menuButtonList);
+                menuAPI.createMenu(menu);
                 //关注事件处理类添加进来
                 handles.add(subscribeHandler);
                 return handles;
