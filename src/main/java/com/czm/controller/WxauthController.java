@@ -20,6 +20,7 @@ public class WxauthController {
         if(openid ==null|| openid.equals("")){
             response.sendRedirect("http://m.xuli.bid/weixin/auth");
         }
+        System.out.println("openid"+openid);
         model.addAttribute("openid",openid);
         return "index";
     }
