@@ -122,12 +122,14 @@ public class WeixinController extends WeixinControllerSupport {
         String code = request.getParameter("code");
         ApiConfig apiConfig = new ApiConfig(getAPPID(), getAPPSECRET());
         OauthAPI oauthAPI = new OauthAPI(apiConfig);
+        System.out.println("code"+code);
         if(code ==null) {
             String wxauthurl = oauthAPI.getOauthPageUrl("http://m.xuli.bid/weixin/auth", OauthScope.SNSAPI_USERINFO, "123");
             response.sendRedirect(wxauthurl);
         }else{
             OauthGetTokenResponse token = oauthAPI.getToken(code);
             String openid = token.getOpenid();
+            response.sendRedirect("http://m.xuli.bid/wx/index?openid="+openid);
         }
     }
 }
