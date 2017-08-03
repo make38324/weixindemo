@@ -130,7 +130,7 @@ public class WeixinController extends WeixinControllerSupport {
             OauthGetTokenResponse token = oauthAPI.getToken(code);
             String openid = token.getOpenid();
             System.out.println("getopenid():"+openid);
-            response.sendRedirect("http://m.xuli.bid/wx/index?openid="+openid);
+            response.sendRedirect("http://weixin.qq.com/r/cij95ZTE48mcrdCG931g");
         }
     }
 }
