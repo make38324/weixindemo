@@ -14,14 +14,16 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/wx")
 public class WxauthController {
+
     @RequestMapping("/index")
     public String index(HttpServletRequest request,HttpServletResponse response,Model model) throws IOException {
         String openid = request.getParameter("openid");
+        System.out.println("openid" + openid);
         if(openid ==null|| openid.equals("")){
             response.sendRedirect("http://m.xuli.bid/weixin/auth");
+        }else {
+            model.addAttribute("openid", openid);
         }
-        System.out.println("openid"+openid);
-        model.addAttribute("openid",openid);
         return "index";
     }
 }
